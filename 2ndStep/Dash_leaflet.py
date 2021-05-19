@@ -43,3 +43,64 @@ def state_hover(feature):
 
 if __name__ == '__main__':
     app.run_server()
+
+
+
+# from : https://lyz-code.github.io/blue-book/coding/python/dash_leaflet/
+
+
+'''Check that out :
+import dash_leaflet as dl
+import gpxpy
+
+icon = {
+    "iconUrl": "https://leafletjs.com/examples/custom-icons/leaf-green.png",
+    "shadowUrl": "https://leafletjs.com/examples/custom-icons/leaf-shadow.png",
+    "iconSize": [38, 95],  # size of the icon
+    "shadowSize": [50, 64],  # size of the shadow
+    "iconAnchor": [
+        22,
+        94,
+    ],  # point of the icon which will correspond to marker's location
+    "shadowAnchor": [4, 62],  # the same for the shadow
+    "popupAnchor": [
+        -3,
+        -76,
+    ],  # point from which the popup should open relative to the iconAnchor
+}
+
+
+def get_data():
+    gpx_file = open("data.gpx", "r")
+    gpx = gpxpy.parse(gpx_file)
+    markers = []
+    for waypoint in gpx.waypoints:
+        markers.append(
+            dl.Marker(
+                title=waypoint.name,
+                position=(waypoint.latitude, waypoint.longitude),
+                icon=icon,
+                children=[
+                    dl.Tooltip(waypoint.name),
+                    dl.Popup(waypoint.name),
+                ],
+            )
+        )
+    cluster = dl.MarkerClusterGroup(id="markers", children=markers)
+    return cluster
+
+
+app = dash.Dash(__name__)
+app.layout = html.Div(
+    dl.Map(
+        [
+            dl.TileLayer(),
+            get_data(),
+        ],
+        zoom=7,
+        center=(40.0884, -3.68042),
+    ),
+    style={
+        "height": "100vh",
+    },
+)'''
