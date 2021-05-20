@@ -23,7 +23,7 @@ app.layout = html.Div([
         dl.TileLayer(),
         dl.GeoJSON(data=dPoints,id='capitals',cluster=True),  # in-memory geojson (slowest option)
         dl.GeoJSON(data=dRoutes,id='states'),  # in-memory geobuf (smaller payload than geojson)
-    ], style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"}, id="map"),
+    ], style={'width': '100%', 'height': '100vh', 'margin': "auto", "display": "block"}, id="map"),
     html.Div(id="state"), html.Div(id="capital")
 ])
 
